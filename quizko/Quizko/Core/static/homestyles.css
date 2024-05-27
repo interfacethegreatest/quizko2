@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;500;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+
+body {
+    background-color: #010030;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 100;
+    color: aliceblue;
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+}
+
+
+.container {
+    height: 600px;
+    padding: 20px;
+    margin-right: 220px;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.container2 {
+    height:40%;
+    padding: 20px;
+    margin-left: 8%;
+    margin-right: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.secondHero{
+    width: 30%;
+    height: 30%;
+}
+
+
+.container img{
+    width: 66%;
+    height: 550px;
+}
+
+.hero2-text h1{
+    font-size: 360%;
+    margin-right: 15%;
+    margin-bottom: 8px;
+}
+
+.hero-text h1{
+    font-size: 3.9rem;
+    margin-bottom: 8px;
+
+}
+
+.hero2-text p{
+    font-size: 160%;
+    margin-bottom: 12px ;
+    margin-right: 15%;
+}
+
+.hero-text{
+    margin-bottom: 12px;
+    font-size: 1;
+    margin-left: 200px;
+
+}
+
+.hero-text p{
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.container button {
+    border-radius: 36px;
+    width: 30%;
+    height: 65px;
+    padding: 1em 2.1em 1.1em;
+    margin: 8px;
+    border: none;
+    background-color: #8d8dda85;
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0em -0.2em 0em #8D8DDA inset;
+    transition: color 3s ease-in-out;
+}
+
+.container2 button{
+    border-radius: 36px;
+    width: 30%;
+    height: 65px;
+    padding: 1em 2.1em 1.1em;
+    margin: 8px;
+    border: none;
+    background-color: #8d8dda80;
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0em -0.2em 0em #8D8DDA inset;
+    transition: color 3s ease-in-out;
+    margin-top: 6%;
+}
+
+button:hover{
+    background-color: rgba(82, 22, 138, 0.432);
+    color: #fcfcfc;
+    border: 3px solid #0088f7;
+    cursor: pointer;
+}
+
+
+.featured {
+    margin-top: 20%;
+    display: block;
+    height: 120px;
+    width: 75%;
+    margin: 0 auto; /* Add this line to center horizontally */
+}
+
+.featured-text{
+    display: flex;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.featured-tab{
+    display: flex;
+    background-color: rgb(119, 121, 122) ;
+    height: 90px;
+    width: 98%;
+    border-radius: 22px;
+    opacity: 80%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.brand1{
+    width: 204px;
+    height: 74px;
+}
+
+.brand2 {
+    width:174px;
+    height:28px;
+}
+
+.brand3{
+    width: 74px;
+    height: 40px;
+}
+
+.brand4 {
+    width: 122px;
+    height: 31px;
+}
+
+
+.brand2, .brand3, .brand4{
+    padding-top: 15px;
+}
+
+section img{
+    max-width: 100%;
+}
+
+section p{
+    line-height: 27px;
+}
+
+section{
+    padding: 80px 0;
+    padding-top: 0;
+}
+
+.title{
+    text-align: center;
+    padding: 15px;
+}
+
+.title p{
+ font-size: 18px;
+}
+
+.row{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col{
+    flex: 1 1 250px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.testimonials{
+    text-align: center;
+    background-color: #010030
+}
+.testimonials .col{
+    background-color: #8d8dda85;
+    color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 80px;
+
+}
+
+.testimonials .col:hover{
+    background-color: #fff;
+    color: #8D8DDA;
+}
+
+.testimonials h2{
+    font-size: 32px;
+}
+
+.testimonials img {
+    border-radius: 50%;
+    border-style: solid;
+    margin-top: -75px;
+}
+
+a{
+    font-size: larger;
+}
+
+
+
+@media (max-width:884px) {
+    .container{
+        margin-top: 10px;
+        flex-direction: column;
+    }
+
+    .container2 {
+        margin-top: 10px;
+        flex-direction: column;
+    }
+     
+    .hero2-text{
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-text{
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero2-text h1{
+      font-size: 3rem;
+    }
+
+    .hero-text h1{
+       font-size: 3rem;
+    }
+
+    .featured{
+        margin-top: 20%;
+    }
+
+    .testimonials .col{
+        flex-direction: column;
+
+    }
+}
+
+@media (max-width:678px) {
+    .hero-text h1{
+       font-size: 2rem;
+    }
+
+    .featured {
+        align-items: center;
+    }
+}
+
+@media (max-width:678px) {
+    nav ul{
+       display: none;
+    }
+}
+
+@media (max-width:1400px) {
+    .container button{
+        font-size: 0.7em;
+    }
+    .hero-text{
+        margin-left: 90px;
+    }
+}
+
+@media (max-width:1200px){
+    .hero-text h1 {
+        font-size: 3.0rem;
+    }
+    .hero-text p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width:1200px){
+    .container img{
+        width: 49.55%;
+        height:412px;
+    }
+}
+
+@media (max-width:992px){
+    .container {
+        margin-left: 100px;
+    }
+    .hero-text{
+        margin-left: 0;
+    }
+}

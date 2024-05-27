@@ -1,0 +1,76 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block title%} {{obj.title}} {% endblock %}
+{}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'homestyles.css' %}">
+<link rel="stylesheet" href="{% static 'detail.css' %}">
+<script src="{% static 'detail.js' %}" defer></script>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title" id="exampleModalLabel" style="color: black;">Results</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Results:
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"><a href="{%url 'browse' %}" style="color: white;">Complete</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="detailTitle">
+    <p class="detailTitleText">{{ obj.title }}</p>
+    <p>in</p>
+    <p class="detailTitleText">{{ obj.subject }}</p>
+    <div id="timer-box"></div>
+
+</div>
+<div class="detailScroll">
+    <nav class="sidebar">
+        <header>
+            <h2 class="detailHeader">Quizko</h2>
+            <h3 class="detailHeader">{{ obj.title }}</h3>
+        </header>
+        <div class="scrollbox">
+            <div class="scrollbox-inner" id="scrollbox-inner">
+                {% for question in questions %}
+                <div>
+                    <h2></h2>
+                </div>
+                {% endfor %}
+                <br>
+            </div>
+        </div>
+        <div class="detailFooter">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning"><a href="{%url 'browse' %}" style="color: white;">Return</a></button>
+            <br>
+            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal" id="submitQuiz" style="visibility: hidden;">
+             End Exam
+            </button>
+            <a class="btn btn-primary" href="{% url 'conversation:new' obj.id %}" role="button">Add comments</a>   
+        </div>
+    </nav>
+    <div class="detailContent">
+        <h2 class="detailContentTextDefault">Contents</h2>
+        <form id="quiz-form">
+            {% csrf_token %}
+            <div id="quiz-box"></div>
+            
+        </form>
+    </div>
+</div>
+
+<script>
+
+</script>
+{% endblock %}
+

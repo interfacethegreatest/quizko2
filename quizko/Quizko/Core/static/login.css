@@ -1,0 +1,31 @@
+.signUpCentral{
+    width: 100%;
+    margin-top: 6px;
+    
+    display: flex;
+    justify-content: center;
+}
+
+.mainContainer{
+    align-items: center;
+    background-color: rgba(179, 175, 175, 0.568);
+    justify-content: center;
+    margin-top: 6px;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.btn{
+    padding: 4px 8px;
+    color: aliceblue;
+}
+
+.signUpBoxes{
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    text-decoration: underline;
+}

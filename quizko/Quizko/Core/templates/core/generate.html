@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'homestyles.css' %}">
+<link rel="stylesheet" href="{% static 'generate.css' %}">
+
+<div class="form-container">
+    <p class="d-flex gap-1">
+        <button id="expandButton" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleQuiz" aria-expanded="false" aria-controls="collapseExample">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-expand" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10"/>
+            </svg>
+        </button>
+    </p>
+    <div class="collapse" id="collapseExampleQuiz" style="width: 80%;">
+        <div class="card card-body" id="card-body">
+            <form onsubmit="return false" id="quiz-form" action="." method="post" enctype="multipart/form-data" class="form-content" style="display:flex; flex-direction: column;">
+                {% csrf_token %}
+                <h1 style="text-align: center;color: black;"> Design Your Quiz</h1>
+                <div class="mb-3">
+                    <label for="title" class="form-label" style="color: black;"><b>Title</b></label>
+                    {{ quiz_form.title }}
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label"><b>Description</b></label>
+                    {{ quiz_form.description }}
+                </div>
+                <div class="mb-3">
+                    <label for="difficulty" class="form-label"><b>Difficulty</b></label>
+                    {{ quiz_form.difficulty }}
+                </div>
+                <div class="mb-3">
+                    <label for="time" class="form-label"><b>Time (minutes)</b></label>
+                    {{ quiz_form.time }}
+                </div>
+                <div class="mb-3">
+                    <label for="number_of_questions" class="form-label"><b>Number of Questions</b></label>
+                    <span id="number_of_questions_text" style="display: none;">{{ quiz_form.number_of_questions }}</span>
+                    <div style="display: flex;gap: 5px;">
+                     {{ quiz_form.number_of_questions }}
+                     <button style="padding-top: 4px;" onclick="questionButtonAction()" id="expandButtonQuestion" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExampleQuestion" aria-expanded="false" aria-controls="collapseExample">
+                            +
+                     </button>
+                    </div>
+                    
+                    <label for=""><b>Please generate questions. Select each page and complete accordingly.</b></label>
+                    <br>
+                    
+                    <div id="questionDiv" style="width: 100%;">
+
+                   </div>
+                </div>
+                <div class="mb-3">
+                    <label for="required_score_to_pass" class="form-label"><b>Required Score to Pass</b></label>
+                    {{ quiz_form.required_score_to_pass }}
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label"><b>Subject</b></label>
+                    {{ quiz_form.subject }}
+                </div>
+                {% if quiz_form.errors or quiz_form.non_field_errors %}
+                <div style="margin-bottom: 3px; padding: 6px; background-color: red; border-radius: 6px;">
+                    {% for field in quiz_form %}
+                    {{ field.errors }}
+                    {% endfor %}
+
+                    {{ quiz_form.non_field_errors }}
+                </div>
+                {% endif %}
+                <br>
+                <br>
+                <button onclick="submitQuiz()" type="submit" class="btn btn-info" id="submitButton">Submit</button>
+            </form>
+          </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'generate.js' %}" defer></script>
+{% endblock %}

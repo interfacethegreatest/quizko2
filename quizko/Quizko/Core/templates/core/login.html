@@ -1,0 +1,42 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block title%}Log in{%endblock%}
+
+{% block content %}
+<link rel="stylesheet" href ="{% static 'homestyles.css'%}">
+<link rel="stylesheet" href ="{% static 'login.css'%}">
+
+<br><br>
+<div class="signUpCentral" style="padding-bottom: 200px; padding-top: 60px;">
+    <div class="mainContainer">
+        <h1>Log in</h1>
+
+
+        <form action="." method="post" style="padding-bottom: 1px;">
+            {% csrf_token%}
+
+            <div class="signUpBoxes">
+                <label for="" style="margin-bottom: 3px;">Username</label>
+                {{form.username}}
+            </div>
+
+            <div class="signUpBoxes">
+                <label for="" style="margin-bottom: 3px;">Password</label>
+                {{form.password}}
+            </div>
+
+            {% if form.errors or form.non_field_errors%}
+              <div style="margin-bottom: 3px; padding: 6px; background-color: red; border-radius: 6px;">
+              {% for field in form %}
+                {{field.errors}}
+              {% endfor%}
+
+              {{form.non_field_errors}}
+             </div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

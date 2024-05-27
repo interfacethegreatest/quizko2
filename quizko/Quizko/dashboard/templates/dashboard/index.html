@@ -1,0 +1,163 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block title%}Contact {%endblock%}
+
+{% block content %}
+<link rel="stylesheet" href ="{% static 'homestyles.css'%}">
+<link rel="stylesheet" href ="{% static 'dashboards.css'%}">
+<div class="card" id="outerCard">
+    <div class="card card-body">
+      <h1 style="color: black; text-align: center;">Dashboard</h1>
+      <div id="selector" style="margin-bottom: 10px;">
+        <div class="btn-group" id="quizDiv">
+          <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: flex; align-items: center;">
+            <div style="display: flex; flex-direction: column;">
+                <h3 style="color: #2125298a; width: 60px;"><b name="quizIdentifierTop">Quiz</b></h3>
+                <h3 id="buttonTitle" style="color: black;padding-right: 16px;"><b name="quizIdentifier">All</b></h3>
+            </div>
+        </button>
+          <ul class="dropdown-menu" id="quizDropdown">
+            
+            {% for item in quizzes %}
+            <li>
+                <a id="question" class="dropdown-item" href="#" onclick="populateListQuiz(this)"
+                   data-pk="{{ item.pk }}"
+                   Questions="{{ item.number_of_questions }}"
+                   Quiz="{{ item.title }}"
+                   Difficulty="{{ item.difficulty }}"
+                   Time="{{ item.time }}"
+                   Pass-score="{{ item.required_score_to_pass }}"
+                   Description="{{ item.description }}">{{ item.title }}</a>
+                {% for question in item.get_questions %}
+                  <span class="{{item.title}}"
+                    Question="{{ forloop.counter}}"
+                    Question created="{{ question.created }}"                
+                    Question text="{{ question.text }}">
+                    </span>
+                    {% for answer in question.get_answers %}
+                     <span class="{{question.text}}"
+                      question="{{forloop.counter}}"
+                      text="{{answer.text}}"
+                      isCorrect="{{answer.is_correct}}">
+                     </span>
+                    {% endfor %}
+                {% endfor %}
+        {% endfor %}
+              </li>
+          </ul>
+        </div>
+        
+      <br>
+      <h5 style="padding-top: 5px;">
+        <b>
+        Select a quiz to observe, edit and delete its detail.
+        </b>      
+      </h5>
+      <div id="buttonSelector" style="display: flex;">
+        <div style="display: flex;flex-direction: column; gap: 3px;max-width: fit-content;">
+       <button type="button" class="btn btn-light" id="questionEdit" onclick="allowEdit()" disabled>
+        <p><b>Generate New Fields:</b></p>
+        <h2><b>Edit.</b></h2>
+        <p id="buttonBottomText">Vs Previous Version.</p>
+       </button>
+       <button type="button" class="btn btn-light" id="questionEdit" name="deleteButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>
+        <p><b>Delete all fields:</b></p>
+        <h2><b>Delete.</b></h2>
+        <p id="buttonBottomText">Vs Previous Version.</p>
+       </button>
+       <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete.</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <h2 class="modal-title fs-6">Deleting a quiz will also delete it's respective questions and answer choices, ...</h2>
+      <br>
+      <br>
+      <h3> Are you sure?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-warning" data-bs-dismiss="modal" style="width: 75px;height: 50px;">Close</button>
+        <button type="button" class="btn btn-primary" style="height: 50px;" onclick="deleteModel()" data-bs-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+       </div>
+       <button type="button" class="btn btn-light" id="infographic" style="margin-left: 25px;">
+        <h6 id="infographicTop"><b>Completed Quizzes:</b></h6>
+        <h2 id="infographicMain"><b></b></h2>
+        <h6 id="infographicSubMain"><b></b></h6>
+        <p id="buttonBottomText">Vs Previous Day.</p>
+       </button>
+       <button type="button" class="btn btn-light" id="infographic" style="margin-left: 25px;">
+        <h6 id="infographicTop"><b>Average Quiz Score:</b></h6>
+        <h2 id="infographicMain"><b></b></h2>
+        <h6 id="infographicSubMain"><b></b></h6>
+        <p id="buttonBottomText">Vs Previous Day.</p>
+       </button>
+       <button type="button" class="btn btn-light" id="infographic" style="margin-left: 25px;">
+        <h6 id="infographicTop"><b>Average Number Of Questions:</b></h6>
+        <h2 id="infographicMain"><b></b></h2>
+        <h6 id="infographicSubMain"><b></b></h6>
+        <p id="buttonBottomText">Vs Previous Day.</p>
+       </button>
+      </div>
+      <h5 style="padding-top: 5px;">
+        <b>
+        A quiz will apear in the window below once selected.
+        </b>      
+      </h5>
+      <div class="card card-body scroll-bg" id="card-body">
+        <div class="scroll-div">
+          <div class="scroll-object">
+            {% for item in quizzes %}
+            <form onsubmit="return false" pk="{{item.pk}}" name="{{item.title}}" id="quiz-form_{{ forloop.counter }}" action="." method="post" enctype="multipart/form-data" class="form-content" style="display:flex; flex-direction: column; display: none;">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="quiz_title_{{ forloop.counter }}">Quiz Title</label>
+                <input type="text" class="form-control" id="quiz_title_{{ forloop.counter }}" name="quiz_title" value="{{ item.title }}"disabled>
+              </div>
+              <div class="mb-3">
+                <label for="quiz_difficulty_{{ forloop.counter }}">Quiz Difficulty</label>
+                <input type="text" class="form-control" id="quiz_difficulty_{{ forloop.counter }}" name="quiz_difficulty" value="{{ item.difficulty }}"disabled>
+              </div>
+              <div class="mb-3">
+                <label for="quiz_time_{{ forloop.counter }}">Quiz Time</label>
+                <input type="text" class="form-control" id="quiz_time_{{ forloop.counter }}" name="quiz_time" value="{{ item.time }}"disabled>
+              </div>
+              <div class="mb-3">
+                <label for="quiz_pass_score_{{ forloop.counter }}">Quiz Pass Score</label>
+                <input type="text" class="form-control" id="quiz_pass_score_{{ forloop.counter }}" name="quiz_pass_score" value="{{ item.required_score_to_pass }}"disabled>
+              </div>
+              <div class="mb-3">
+                <label for="quiz_description_{{ forloop.counter }}">Quiz Description</label>
+                <input type="text" class="form-control" id="quiz_description_{{ forloop.counter }}" name="quiz_description" value="{{ item.description }}"disabled>
+              </div>
+              {% for question in item.get_questions %}
+               <div class="mb-3">
+                <label for="quiz_question_{{ forloop.counter }}">Quiz question {{forloop.counter}}</label>
+                <input type="text" class="form-control" id="quiz_question_{{ forloop.counter }}" name="quiz_question_{{forloop.counter}}" value="{{ question.text }}"disabled>
+              </div>
+              {% for answer in question.get_answers %}
+                <div class="mb-3">
+                  <label for="quiz_question_{{ forloop.parentloop.counter }}_answer_{{forloop.counter}}">Question {{ forloop.parentloop.counter }} Answer {{forloop.counter}}</label>
+                  <input type="text" class="form-control" id="Quiz_question_{{ forloop.parentloop.counter }}_answer_{{forloop.counter}}" name="Quiz_question_{{ forloop.parentloop.counter }}_answer_{{forloop.counter}}" value="{{ answer.text }}"disabled>
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" {% if answer.is_correct %}checked{% endif %} disabled>
+                  <label class="form-check-label" for="exampleCheck1">Correct Answer</label>
+                </div>
+              {% endfor %}
+           {% endfor %}
+           <button onclick="submitExam(this)" pk="{{item.pk}}" id="submitButton_{{item.title}}" type="submit" class="btn btn-primary" style="height: 50px;" disabled>Submit</button>
+            </form>            
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<script src="{% static 'dashboard.js' %}" defer></script>
+{% endblock %}

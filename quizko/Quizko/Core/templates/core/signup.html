@@ -1,0 +1,52 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block title%}Sign Up{%endblock%}
+
+{% block content %}
+<link rel="stylesheet" href ="{% static 'homestyles.css'%}">
+<link rel="stylesheet" href ="{% static 'signup.css'%}">
+
+<br><br>
+<div class="signUpCentral" style="padding-bottom: 30px;">
+    <div class="mainContainer">
+        <h1>Sign Up</h1>
+
+
+        <form action="." method="post" style="padding-bottom: 1px;">
+            {% csrf_token%}
+
+            <div class="signUpBoxes">
+                <label for="" style="margin-bottom: 3px;">Username</label>
+                {{form.username}}
+            </div>
+
+            <div class="signUpBoxes">
+                <label for="" style="margin-bottom: 3px;">Email</label>
+                {{form.email}}
+            </div>
+
+            <div class="signUpBoxes">
+                <label for="" style="margin-bottom: 3px;">Password</label>
+                {{form.password1}}
+            </div>
+
+            <div class="signUpBoxes">
+                <label for="" style="margin-bottom: 3px;">Repeat Password</label>
+                {{form.password2}}
+            </div>
+
+            {% if form.errors or form.non_field_errors%}
+              <div style="margin-bottom: 3px; padding: 6px; background-color: red; border-radius: 6px;">
+              {% for field in form %}
+                {{field.errors}}
+              {% endfor%}
+
+              {{form.non_field_errors}}
+             </div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

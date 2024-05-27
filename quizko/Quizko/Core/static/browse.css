@@ -1,0 +1,22 @@
+/* Custom CSS to change border color of list group items */
+.list-group {
+    --bs-list-group-border-color: #000000; /* Change border color to red */
+    --bs-list-group-action-hover-bg: #1665f88f;
+  }
+  
+.card{
+    background-color: #010030;
+}
+
+.a:hover{
+    background-color: aqua;
+}
+
+#searchable {
+    width: 24rem;
+}
+
+#searchable button{
+    background-color: teal;
+    color: aliceblue;
+}

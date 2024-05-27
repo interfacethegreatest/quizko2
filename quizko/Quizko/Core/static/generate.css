@@ -1,0 +1,39 @@
+.form-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding-top: 10px;
+    padding-bottom:420px;
+    flex-direction: column;
+    width: 100%;
+    
+}
+label{
+    color: black;
+}
+
+.form-content {
+    border: 1px solid #fff; /* White border */
+    border-radius: 4px;
+    padding: 5px 10px
+}
+
+#submitButton{
+    width: 10%;
+}
+
+#questionButton{
+    display: flex;
+    flex-direction: column;
+}
+
+#expandButtonQuestion{
+    width: 4%;
+    justify-content: center;
+    align-items: center;
+}
+
+.is-invalid {
+    border: 1px solid red;
+    box-shadow: 0 0 5px red;
+}

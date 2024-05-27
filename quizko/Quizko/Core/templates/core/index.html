@@ -1,0 +1,78 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block title%}Welcome{%endblock%}
+
+{% block content %}
+<link rel="stylesheet" href ="{% static 'homestyles.css'%}">
+    
+    <main>
+        <div class = "container"> 
+         <img src="{% static 'screen.png' %}" alt="">
+         <div class="hero-text">
+            <h1>Discover And Create Your Own Quizzes!</h1>
+            <p>Quizko is a web-based assessment and learning website. It comprises tools to create general quizzes to improve knowledge.</p>
+            <button><a href="{%url 'core:login' %}">Log in</a></button> 
+            <BUtton class="signup"><a href="{%url 'core:signup' %}">Sign up</a></BUtton>
+        </div>
+        </div>
+        <br>
+        <br>
+        <div class="featured">
+            <p class="featured-text">
+                FEATURED ON:
+            </p>
+            <div class="featured-tab">
+                <img src="{% static 'brand1.png' %}" alt="" class="brand1">
+                <img src="{% static 'brand2.png' %}" alt="" class="brand2">
+                <img src="{% static 'brand3.png' %}" alt="" class="brand3">
+                <img src="{% static 'brand4.png' %}" alt="" class="brand4">
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="container2">
+            <img src="{% static 'secondHero.png' %}" alt="" class="secondHero">
+            <div class="hero2-text">
+                <h1>Built in analytics to track your tests.</h1>
+                <p>Use our built-in dashboard to pull valuable insights from tests and monitor the value of your Quizko account.</p>
+                <button><a href="{%url 'core:generate' %}">Generate test</a></button>
+            </div>
+        </div>
+        <div class = "container"> 
+            <img src="{% static 'hero3.png' %}" alt="">
+            <div class="hero-text">
+               <h1>Our Quizko app is the easiest way to make tests on the go.</h1>
+               <p>Browse tests from your smartphone!</p>
+               <button>Get the App</button> 
+           </div>
+           </div>
+        <br>
+        <br>
+        <section class="testimonials">
+            <div class = "title">
+                <h2>Testimonials</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, magni quas tempore quod, voluptatibus officia facere rem cum ab et, possimus obcaecati saepe at unde eius eligendi error sint doloribus?</p>
+            </div>
+            <div class="row">
+                <div class="col">
+                <img src="{% static 'test1.png' %}" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, aut placeat exercitationem enim aspernatur ullam, earum, sunt veritatis tempore inventore expedita vero corrupti. Beatae, natus magnam. Voluptatem eveniet laborum esse!</p>
+                <h4>Kelly John   </h4>
+                </div>
+                <div class="col">
+                 <img src="{% static 'test2.png' %}" alt="">
+                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, aut placeat exercitationem enim aspernatur ullam, earum, sunt veritatis tempore inventore expedita vero corrupti. Beatae, natus magnam. Voluptatem eveniet laborum esse!</p>
+                 
+                 <h4>John Snow</h4>
+                </div>
+                <div class="col">
+                 <img src="{% static 'test3.png' %}" alt="">
+                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, aut placeat exercitationem enim aspernatur ullam, earum, sunt veritatis tempore inventore expedita vero corrupti. Beatae, natus magnam. Voluptatem eveniet laborum esse!</p>
+                 <h4>Hali Snow   </h4>
+                </div>
+            </div>
+
+        </section>
+    </main>
+{% endblock %}

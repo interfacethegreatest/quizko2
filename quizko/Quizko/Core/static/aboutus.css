@@ -1,0 +1,111 @@
+.aboutusValues{
+    padding: 0 10px;
+    text-align: center;
+}
+
+blockquote{
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 1em;
+
+}
+
+a{
+  text-decoration: underline;
+}
+
+.two-column{
+    columns: 2 30ch;
+    padding: 5%;
+    text-align: left;
+}
+
+.aboutusLead::first-letter{
+    font-size: 5em;
+    float: left;
+    line-height: 1.1;
+    margin-right: 0.5rem;
+    position: inherit;
+}
+
+.aboutusColumnText{
+    font-size: 1.5em;
+}
+
+.aboutusLead{
+    font-size: 1.5em;
+}
+
+.aboutusTitle{
+    font-weight: 700;
+    font-size: 8rem;
+    justify-content: center;
+    display: flex;
+    padding-top: 5%;
+}
+
+article{
+    grid-template-columns: min(40%, 40rem);
+}
+
+.lead{
+    justify-content: center;
+    display: flex;
+    font-size: 3rem;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.aboutusHero{
+    display: flex;
+    padding: 5%;
+}
+
+.aboutusHeroSection{
+
+}
+
+.left{
+    display: flex;
+    font-size: 3rem;
+    text-align: start;
+    padding-right: 16%;
+    padding-left: 8%;
+}
+
+.right{
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.value{
+    width: 50%;
+    justify-content: center;
+    font-size: larger;
+}
+
+h3{
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: 10px;
+}
+
+blockquote{
+    padding: 3%;
+}
+
+@media (max-width: 1250px) {
+  .right {
+    width: 100%;
+    display: block;
+    padding: 10px;
+  }
+  .value{
+    padding-bottom: 10px;
+    width: 100%;
+  }
+}

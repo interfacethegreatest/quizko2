@@ -1,0 +1,73 @@
+{% extends 'core/base.html'%}
+{% load static %}
+{% block title%}Contact {%endblock%}
+{% block scripts %}
+ 
+{% endblock scripts %}
+
+{% block content %}
+<script src="{% static 'browse.js' %}" defer></script>
+<link rel="stylesheet" href ="{% static 'homestyles.css'%}">
+<link rel="stylesheet" href ="{% static 'browse.css'%}">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel" style="color: black;">Start Test?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal-body-confirm">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+        <button type="button" id="start-button" class="btn btn-success">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pb-6 grid grid-cols-4 gap-4">
+<div class="col-span-1" id="searchable">
+  <h5>Search quizzes</h5>
+ <form method="get" action="{%url 'browse' %}">
+ <div class="input-group mb-3">
+  <input name="query" class="form-control" type="text" value="{{ query }}" placeholder="Find a quiz...">
+  <button class="btn btn-outline-secondary">Search</button> 
+ </div>
+</form>
+</div>
+<h5 class="font-semibold">Clear filters</h5>
+<li><a class="btn btn-warning" href="{% url 'browse' %}" role="button">Clear</a></li>
+<div class="col-span-3">
+  <div class="card">
+    <div class="card-body" style="align-items: center; justify-content: center;">
+      <H2 style="align-items: center; text-align: center; color: aliceblue;">Browse quizzes</H2>
+      {% for item in quizzes %}
+      <div class="list-group" style="padding-right: 20%; padding-left: 20%;">
+      <a href="#" class="list-group-item list-group-item-action modal_clickable" data-bs-toggle="modal" data-bs-target="#exampleModal"
+      data-pk="{{item.pk}}"
+            data-quiz ="{{item.title}}"
+            data-questions="{{item.number_of_questions}}"
+            data-difficult="{{item.difficulty}}"
+            data-time="{{item.time}}"
+            data-pass="{{item.required_score_to_pass}}"
+            data-bs-toggle="modal"
+            data-bs-target="#quizStartModal">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{ item.title }}</h5>
+          <small class="text-body-secondary" style="color:black ;">{{ item.get_status_display }}</small>
+        </div>
+        <p class="mb-1" style="color:black ;">{{ item.description }}.</p>
+        <small class="text-body-secondary" style="color:black ;">Author: {{ item.creator }}</small>
+      </a>
+      </div>
+      <br>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+*{
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.card-body{
+ background-color: #c7c7c7;
+ margin: 0;
+}
+
+#outerCard{
+    margin-left: 15rem;
+    margin-right: 15rem;
+}
+
+.btn-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px; /* Add margin at the bottom to create space between the groups */
+}
+  
+#questionDiv,
+#answerDiv {
+    margin: 0 2px; /* Adjusted margins */
+}
+  
+
+.btn{
+    height: 5.5rem;
+}
+
+.dropdown-menu {
+    background-color: rgb(255, 255, 255);
+}
+
+
+
+.btn h1 {
+    color: black;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: inline;
+    margin: 0;
+    float: left; 
+}
+  
+.btn::after {
+    color: #2125298a;
+    float: right; 
+    right: 0;
+    margin-top: 25px;
+    position: absolute;
+}
+
+.btn-secondary{
+    --bs-btn-bg:#ffffff;
+    --bs-btn-border-color: #ffffff;
+    --bs-btn-hover-bg: #ffffff;
+}
+
+#questionDiv h2 {
+    color: black;
+    display: inline;
+}
+
+@media (max-width: 1330px) {
+ #quizDiv{
+    width: 60%;
+ }
+ #selector{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+ }
+
+ #questionDiv{
+    margin: 4px;
+    width: 40%;
+ }
+
+}
+
+@media (max-width: 1015px) {
+  #questionDiv{
+    width: 60%;
+  }
+}
+
+@media (max-width: 800px) { 
+ 
+ #outerCard{
+    margin-left: 0rem;
+    margin-right: 0rem;
+ }
+ 
+}
+
+#questionEdit{
+    width: 9.7rem;
+    height: 9.7rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --bs-btn-border-color: #000
+
+}
+
+p{
+    font-family: 'Inter', sans-serif;
+    font-size: xx-small;
+    color: #6A6A6A;
+    padding-top: 5%;
+}
+
+h2{
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    align-self: center;
+    font-weight: bolder;
+    margin: 0;
+}
+
+#buttonSelector{
+    position: relative;
+    flex-wrap: wrap;
+    place-content: center;
+}
+
+#buttonBottomText{
+    align-self: center;
+    padding-right: 10px;
+}
+
+.scroll-bg{
+    background-color: #ffffff;
+    width: 95%;
+}
+
+.scroll-div{
+    background-color: #ffffff;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 150px;
+}
+
+#infographic{
+    width: 19.4rem;
+    height: 19.4rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 17px;
+    background-color: #e6e5e5;
+}
+
+#infographicTop{
+    color: #6A6A6A;
+    font-size: large;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-weight:normal
+}
+
+#infographicMain{
+ margin-top: 4rem;
+ font-size: 3.3rem;
+ align-self: center;
+ font-weight: bold;
+ font-family:'Open Sans';
+ margin-left: 5px;
+    
+}
+
+#infographicSubMain{
+    font-size: 1.8rem;
+    align-self: center;
+    color: rgb(2, 170, 2);
+}
+
+.dropdown-menu{
+    --bs-dropdown-link-hover-bg: #6A6A6A;
+}
